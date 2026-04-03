@@ -1,16 +1,72 @@
-# React + Vite
+⚡ Smart Counter System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple but powerful counter built with React — not just +1 / -1, but something closer to how real apps handle values.
 
-Currently, two official plugins are available:
+🧩 What is this?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This started as a basic counter, but then extended step by step to include real-world behaviors like limits, reset control, and state safety.
 
-## React Compiler
+The goal was to **practice how state actually behaves in real applications**, not just demos.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🚀 Features
 
-## Expanding the ESLint configuration
+- Increment / Decrement with custom step
+- Reset to a custom default value
+- Restore previous value (like undo)
+- Prevent negative values (optional toggle)
+- Max limit control
+- Buttons auto-disable when limits are reached
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+⚙️ How it works (simple idea)
+
+Instead of directly updating state, everything goes through a small helper:
+
+const clamp = (value) => {
+  if (preventNegative && value < 0) return 0;
+  if (maxLimit !== null && value > maxLimit) return maxLimit;
+  return value;
+};
+
+
+So every update becomes safe:
+setCount(prev => clamp(prev + step));
+
+This avoids breaking the UI and keeps logic predictable.
+
+🧠 What I focused on
+
+- Using `prev` state properly (important in real apps)
+- Avoiding invalid values (negative / overflow)
+- Keeping logic reusable instead of repeating conditions
+- Making UI react to state (disable buttons, show last value)
+
+🌐 Live Demo
+
+👉 https://smart-counter-system.vercel.app/
+
+🛠 Tech Stack
+
+- React (useState)
+- Tailwind CSS
+- JavaScript (ES6+)
+
+📸 Preview
+
+
+
+💭 Why I built this
+
+To move from **basic React examples → real-world component thinking**
+
+🔮 Next ideas
+
+- Custom hook (`useCounter`)
+- Save data in localStorage
+- Add history (multiple undo)
+- Improve UI animations
+
+👨‍💻 Author
+
+Harsh Maisuriya
+
+
