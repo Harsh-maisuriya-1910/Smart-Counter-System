@@ -51,6 +51,7 @@ This avoids breaking the UI and keeps logic predictable.
 - JavaScript (ES6+)
 
 📸 Preview
+<img width="939" height="653" alt="Screenshot (9)" src="https://github.com/user-attachments/assets/de812e31-cacf-4e4e-9d8d-f0ee8097fa7b" />
 
 
 
